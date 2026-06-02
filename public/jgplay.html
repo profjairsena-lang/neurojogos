@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio das Palavras</title>
+    <link rel="stylesheet" href="style1.css" />
+    <script src="script2.js" defer></script>
+    <script src="history.js" defer></script>
+  </head>
+  <body>
+    <div class="main-layout-wrapper">
+      <!-- COLUNA ESQUERDA: BOTÕES E SIDEBAR -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 20px;
+        "
+      >
+        <button class="hbtn" onclick="playAgain()" style="width: 100%">
+          <span style="font-size: 22px">🔄</span><span>Joga Novamente</span>
+        </button>
+
+        <!-- SIDEBAR JOGADOR 1 -->
+        <div
+          class="player-sidebar sidebar-left"
+          id="sidebar-p1"
+          style="margin-top: 0"
+        >
+          <div class="sidebar-header sc1">Conquistas</div>
+          <div class="trophy-grid" id="t-grid-1"></div>
+        </div>
+      </div>
+
+      <!-- GAME SCREEN -->
+      <div id="game-screen">
+        <div class="score-row">
+          <div
+            class="score-card sc1 active-turn"
+            id="sc1"
+            onclick="openAvPicker(1)"
+            style="cursor: pointer"
+          >
+            <div class="sav" id="gav1">👦</div>
+            <div class="sinfo">
+              <div class="slabel" id="gn1">Jogador 1</div>
+              <div class="sval">Vidas: <span id="gs1">❤️❤️❤️❤️❤️</span></div>
+            </div>
+          </div>
+          <div class="score-card sc2" id="sc2">
+            <div class="sav" id="gav2">👽</div>
+            <div class="sinfo">
+              <div class="slabel" id="gn2">Jogador 2</div>
+              <div class="sval">Vidas: <span id="gs2">❤️❤️❤️❤️❤️</span></div>
+            </div>
+          </div>
+          <img
+            src="avatar/textoh2.png"
+            alt="Palavra Colorida"
+            style="max-width: 80%; height: auto"
+          />
+        </div>
+
+        <div class="pips-row">
+          <div class="pip" id="p0"></div>
+          <div class="pip" id="p1"></div>
+          <div class="pip" id="p2"></div>
+          <div class="pip" id="p3"></div>
+          <div class="pip" id="p4"></div>
+          <span class="pip-label" id="plbl">0 / 5</span>
+        </div>
+
+        <div class="found-list" id="found-list"></div>
+
+        <div class="cat-row">
+          <span style="font-size: 18px">⭐</span>
+          <span style="font-size: 13px; font-weight: 700; color: #555"
+            >Dica de categoria:</span
+          >
+          <select class="cat-sel" id="cat-hint" onchange="applyHint()">
+            <option value="">— Ver dica —</option>
+          </select>
+        </div>
+
+        <div class="grid-wrap">
+          <div class="grid-head">
+            <div></div>
+            <div class="clbl">A</div>
+            <div class="clbl">B</div>
+            <div class="clbl">C</div>
+            <div class="clbl">D</div>
+            <div class="clbl">E</div>
+          </div>
+          <div class="grid-body" id="word-grid"></div>
+        </div>
+
+        <div class="bot-row">
+          <button class="sig-btn" onclick="showSig()">📖 Significado</button>
+          <button class="rst-btn" onclick="resetBoard()">
+            🔄 Reiniciar Palavras
+          </button>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA: BOTÕES E SIDEBAR -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 20px;
+        "
+      >
+        <div style="display: flex; gap: 8px; justify-content: center">
+          <button class="hbtn" onclick="location.href = 'mapa.html'">
+            <span style="font-size: 22px">🗺️</span><span>Mapa</span>
+          </button>
+          <button class="hbtn" onclick="exitGame()">
+            <span style="font-size: 22px">🏠</span><span>Início</span>
+          </button>
+          <button class="hbtn" onclick="openHist()">
+            <span style="font-size: 22px">📊</span><span>Histórico</span>
+          </button>
+        </div>
+
+        <!-- SIDEBAR JOGADOR 2 -->
+        <div
+          class="player-sidebar sidebar-right"
+          id="sidebar-p2"
+          style="margin-top: 0"
+        >
+          <div class="sidebar-header sc2">Conquistas</div>
+          <div class="trophy-grid" id="t-grid-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DE TURNO ESTILIZADO (PADRÃO 3D) -->
+    <div class="overlay" id="turn-modal">
+      <div class="modal-turn">
+        <div class="modal-icon" id="turn-icon">👦</div>
+        <h2 id="turn-player-name">Vez do Jogador</h2>
+        <p>Sua vez de jogar!</p>
+        <p style="font-size: 14px; opacity: 0.9">
+          Selecione 5 palavras do mesmo grupo.
+        </p>
+        <button class="btn-close-turn" onclick="closeM('turn-modal')">
+          Vamos lá!
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL DE ERRO ESTILIZADO -->
+    <div class="overlay" id="error-modal">
+      <div class="modal-error">
+        <div class="modal-icon">😢</div>
+        <h2 id="err-player-name">Ops, Jogador!</h2>
+        <p>A palavra escolhida não pertence ao mesmo grupo.</p>
+        <p class="lost-turn" style="font-weight: 800; color: #fff">
+          💔 Você perdeu 1 vida!
+        </p>
+        <button class="btn-close" onclick="closeM('error-modal')">
+          Entendido
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL DE SUCESSO ESTILIZADO -->
+    <div class="overlay" id="success-modal">
+      <div class="modal-success">
+        <div class="modal-icon">🎉</div>
+        <h2 id="suc-player-name">Parabéns, Jogador!</h2>
+        <p>Você encontrou a categoria:</p>
+        <p class="found-cat-name" id="suc-cat-name">---</p>
+        <p class="points-won">✨ Categoria completada!</p>
+        <button class="btn-close-success" onclick="closeM('success-modal')">
+          Continuar
+        </button>
+      </div>
+    </div>
+
+    <!-- NEW MESSAGE DISPLAY MODAL -->
+    <div class="overlay" id="message-display-modal">
+      <div class="mbox message-box" style="text-align: center">
+        <div id="msg-icon" style="font-size: 60px; margin-bottom: 10px"></div>
+        <p
+          id="msg-text"
+          style="font-size: 18px; color: #333; font-weight: 600"
+        ></p>
+      </div>
+    </div>
+
+    <!-- MODALS -->
+    <div class="overlay" id="sig-modal">
+      <div class="mbox">
+        <h2>📖 Significado</h2>
+        <div class="sig-wd" id="sig-wd">—</div>
+        <div
+          class="sig-cb"
+          id="sig-cb"
+          style="background: #eee; color: #888"
+        ></div>
+        <div class="sig-df" id="sig-df">
+          Passe o mouse sobre uma palavra e clique em Significado.
+        </div>
+        <button
+          id="sig-online-btn"
+          class="mbtn"
+          style="display: none; background: #9b59b6; margin-top: 15px"
+        >
+          🔍 Buscar no Dicionário Online
+        </button>
+        <button class="mbtn" onclick="closeM('sig-modal')">Fechar</button>
+      </div>
+    </div>
+
+    <!-- MODAL DE ALERTA (PONTOS INSUFICIENTES) -->
+    <div class="overlay" id="alert-modal">
+      <div class="mbox" style="text-align: center">
+        <!-- @keyframes shk and .shk-anim moved to style1.css -->
+        <div style="font-size: 60px; margin-bottom: 10px" class="shk-anim">
+          😢
+        </div>
+        <h2 id="alert-player-name" style="color: #e74c3c">Ops!</h2>
+        <p style="margin-bottom: 20px">
+          Você precisa de mais de <b>1 vida</b> para liberar uma dica sem perder
+          o jogo.
+        </p>
+        <button class="mbtn" onclick="closeM('alert-modal')">Entendido</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="hist-modal">
+      <div class="mbox" style="width: 440px">
+        <h2>📊 Histórico de Jogadas</h2>
+        <div class="hlist" id="hlist"></div>
+        <button class="mbtn" onclick="closeM('hist-modal')">Fechar</button>
+      </div>
+    </div>
+
+    <script>
+      function createClouds() {
+        for (let i = 0; i < 10; i++) {
+          const cloud = document.createElement("div");
+          cloud.className = "cloud";
+
+          const w = 120 + Math.random() * 220;
+          const h = w * 0.3;
+
+          cloud.style.width = w + "px";
+          cloud.style.height = h + "px";
+
+          // posição inicial aleatória no Y
+          cloud.style.top = Math.random() * 90 + "vh";
+
+          // começa fora da tela (esquerda)
+          cloud.style.left = -Math.random() * 100 + "vw";
+
+          // velocidade diferente para cada nuvem
+          const duration = 30 + Math.random() * 60; // 30s a 90s
+          cloud.style.animationDuration = duration + "s";
+
+          // atraso aleatório
+          cloud.style.animationDelay = "-" + Math.random() * 60 + "s";
+
+          // leve variação de transparência
+          cloud.style.opacity = 0.3 + Math.random() * 0.5;
+
+          document.body.appendChild(cloud);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", createClouds);
+
+      function openLocalModal(localId) {
+        const modal = document.getElementById("local-modal");
+        const options = document.getElementById("local-options");
+
+        options.innerHTML = "";
+
+        // Busca todas as subcategorias no JSON que possuem esse ID (ex: 'shopping' trará Cinema, Perfumaria, etc)
+        const categoriasFiltradas = G.allCats.filter((c) => c.id === localId);
+
+        if (categoriasFiltradas.length === 0) return;
+
+        categoriasFiltradas.forEach((item) => {
+          const btn = document.createElement("button");
+          btn.className = "local-btn";
+          btn.textContent = item.nome;
+
+          btn.onclick = () => {
+            // Enviamos o ID do local para carregar o grupo temático completo
+            window.location.href =
+              "jgplay.html?cat=" + encodeURIComponent(item.id);
+          };
+          options.appendChild(btn);
+        });
+
+        modal.classList.add("open");
+      }
+
+      function closeLocalModal() {
+        document.getElementById("local-modal").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>

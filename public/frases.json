@@ -1,0 +1,259 @@
+{
+  "categorias": [
+    {
+      "id": "aeroporto",
+      "nome": "Aeroporto: Cabine",
+      "palavras": ["MANCHE", "PAINEL", "ALTÍMETRO", "RADAR", "BÚSSOLA"]
+    },
+    {
+      "id": "aeroporto",
+      "nome": "Aeroporto: Parte Externa",
+      "palavras": ["PISTA", "HANGAR", "TURBINA", "REBOQUE", "BALIZAMENTO"]
+    },
+    {
+      "id": "aeroporto",
+      "nome": "Aeroporto: Tripulantes",
+      "palavras": ["PILOTO", "COMISSÁRIO", "CO-PILOTO", "AEROMOÇA", "CAPITÃO"]
+    },
+    {
+      "id": "aeroporto",
+      "nome": "Aeroporto: Passageiros",
+      "palavras": ["EMBARQUE", "BAGAGEM", "PASSAGEM", "CONEXÃO", "PASSAPORTE"]
+    },
+    {
+      "id": "aeroporto",
+      "nome": "Aeroporto: Constituição",
+      "palavras": ["AEROPLANO", "FUZELAGEM", "AERONAVE", "TREM-DE-POUSO", "ASA"]
+    },
+    {
+      "id": "bombeiros",
+      "nome": "Bombeiros: Veículos",
+      "palavras": [
+        "CAMINHÃO",
+        "AMBULÂNCIA",
+        "VIATURA",
+        "HELICÓPTERO",
+        "QUADRICICLO"
+      ]
+    },
+    {
+      "id": "bombeiros",
+      "nome": "Bombeiros: Ações",
+      "palavras": ["RESGATE", "SALVAMENTO", "COMBATE", "PREVENÇÃO", "EVACUAÇÃO"]
+    },
+    {
+      "id": "bombeiros",
+      "nome": "Bombeiros: No Quartel",
+      "palavras": ["QUARTEL", "ALOJAMENTO", "GARAGEM", "TORRE", "CENTRAL"]
+    },
+    {
+      "id": "bombeiros",
+      "nome": "Bombeiros: O Perigo",
+      "palavras": ["INCÊNDIO", "FUMAÇA", "CHAMA", "CALOR", "EXPLOSÃO"]
+    },
+    {
+      "id": "bombeiros",
+      "nome": "Bombeiros: Equipamentos",
+      "palavras": ["MANGUEIRA", "HIDRANTE", "EXTINTOR", "CAPACETE", "ESCADA"]
+    },
+    {
+      "id": "casa_vovo",
+      "nome": "Casa da Vovó: Cozinha",
+      "palavras": ["BROA", "BULE", "FOGÃO", "FORNO", "BOLO"]
+    },
+    {
+      "id": "casa_vovo",
+      "nome": "Casa da Vovó: Sala",
+      "palavras": ["POLTRONA", "ALMOFADA", "RETRATO", "TAPETE", "CRISTALEIRA"]
+    },
+    {
+      "id": "casa_vovo",
+      "nome": "Casa da Vovó: Quintal",
+      "palavras": ["HORTA", "VARAL", "BALANÇO", "POMAR", "PORÃO"]
+    },
+    {
+      "id": "casa_vovo",
+      "nome": "Casa da Vovó: Afeto",
+      "palavras": ["ABRAÇO", "CARINHO", "CONTO", "COLO", "HISTÓRIA"]
+    },
+    {
+      "id": "casa_vovo",
+      "nome": "Casa da Vovó: Ofícios",
+      "palavras": ["TRICÔ", "CROCHÊ", "COSTURA", "REMEDINHO", "AVENTAL"]
+    },
+    {
+      "id": "casa_familia",
+      "nome": "Casa da Família: Sala",
+      "palavras": ["TELEVISÃO", "SOFÁ", "ESTANTE", "QUADRO", "CONTROLE"]
+    },
+    {
+      "id": "casa_familia",
+      "nome": "Casa da Família: Cozinha",
+      "palavras": ["GELADEIRA", "PANELA", "ARMÁRIO", "MESA", "TALHER"]
+    },
+    {
+      "id": "casa_familia",
+      "nome": "Casa da Família: Quarto",
+      "palavras": ["CAMA", "GUARDA-ROUPA", "TRAVESSEIRO", "COBERTORE", "ABAJUR"]
+    },
+    {
+      "id": "casa_familia",
+      "nome": "Casa da Família: Momentos",
+      "palavras": ["ALMOÇO", "FESTA", "REUNIÃO", "CONVERSA", "DESCANSO"]
+    },
+    {
+      "id": "casa_familia",
+      "nome": "Casa da Família: Estrutura",
+      "palavras": ["PAREDE", "TELHADO", "JANELA", "PORTA", "CORREDOR"]
+    },
+    {
+      "id": "sorveteria",
+      "nome": "Sorveteria: Sabores",
+      "palavras": ["CHOCOLATE", "MORANGO", "BAUNILHA", "CREME", "MENTA"]
+    },
+    {
+      "id": "sorveteria",
+      "nome": "Sorveteria: Formas",
+      "palavras": ["BOLA", "PICOLÉ", "TAÇA", "SUNDAE", "MILKSHAKE"]
+    },
+    {
+      "id": "sorveteria",
+      "nome": "Sorveteria: Complementos",
+      "palavras": ["CALDA", "GRANULADO", "FAROFA", "CEREJA", "MARSHMALLOW"]
+    },
+    {
+      "id": "sorveteria",
+      "nome": "Sorveteria: Utensílios",
+      "palavras": [
+        "CONCHA",
+        "COLHERZINHA",
+        "GUARDANAPO",
+        "CASQUINHA",
+        "COPINHO"
+      ]
+    },
+    {
+      "id": "sorveteria",
+      "nome": "Sorveteria: Ambiente",
+      "palavras": ["FREEZER", "BALCÃO", "CARDÁPIO", "REFRESCO", "GELADO"]
+    },
+    {
+      "id": "doceria",
+      "nome": "Doceria: Doces",
+      "palavras": ["BRIGADEIRO", "BEIJINHO", "PUDIM", "QUINDIM", "MOUSSE"]
+    },
+    {
+      "id": "doceria",
+      "nome": "Doceria: Bolos",
+      "palavras": ["TORTA", "ROCAMBOLE", "GLACÊ", "RECHEIO", "COBERTURA"]
+    },
+    {
+      "id": "doceria",
+      "nome": "Doceria: Biscoitos",
+      "palavras": ["COOKIE", "AMANTEIGADO", "ROSQUINHA", "WAFERS", "MACARON"]
+    },
+    {
+      "id": "doceria",
+      "nome": "Doceria: Ingredientes",
+      "palavras": ["AÇÚCAR", "FARINHA", "MANTEIGA", "BAUNILHA", "FERMENTO"]
+    },
+    {
+      "id": "doceria",
+      "nome": "Doceria: Eventos",
+      "palavras": [
+        "CONFEITARIA",
+        "ANIVERSÁRIO",
+        "FESTA",
+        "ENCOMENDA",
+        "DOCINHO"
+      ]
+    },
+    {
+      "id": "praca_parque",
+      "nome": "Praça/Parque: Brinquedos",
+      "palavras": [
+        "GANGORRA",
+        "BALANÇO",
+        "ESCORREGADOR",
+        "GIRA-GIRA",
+        "VELOCÍPEDE"
+      ]
+    },
+    {
+      "id": "praca_parque",
+      "nome": "Praça/Parque: Natureza",
+      "palavras": ["ÁRVORE", "GRAMA", "FLOR", "JARDIM", "PLANTA"]
+    },
+    {
+      "id": "praca_parque",
+      "nome": "Praça/Parque: Atividades",
+      "palavras": [
+        "CORRIDA",
+        "PIQUENIQUE",
+        "PASSEIO",
+        "CAMINHADA",
+        "BRINCADEIRA"
+      ]
+    },
+    {
+      "id": "praca_parque",
+      "nome": "Praça/Parque: Estrutura",
+      "palavras": ["BANCO", "FONTE", "POSTE", "LIXEIRA", "CALÇADA"]
+    },
+    {
+      "id": "praca_parque",
+      "nome": "Praça/Parque: Ambiente",
+      "palavras": ["AR-LIVRE", "SOMBRA", "PASSARINHO", "QUIETUDE", "LAZER"]
+    },
+    {
+      "id": "escola",
+      "nome": "Escola: Sala de Aula",
+      "palavras": ["QUADRO", "CARTEIRA", "MESA", "GIZ", "APAGADOR"]
+    },
+    {
+      "id": "escola",
+      "nome": "Escola: Biblioteca",
+      "palavras": ["LIVRO", "ESTANTE", "LEITURA", "PESQUISA", "SILÊNCIO"]
+    },
+    {
+      "id": "escola",
+      "nome": "Escola: Recreio",
+      "palavras": ["PÁTIO", "LANCHE", "AMIGO", "SINAL", "CORRERIA"]
+    },
+    {
+      "id": "escola",
+      "nome": "Escola: Avaliações",
+      "palavras": ["PROVA", "NOTA", "TESTE", "ESTUDO", "BOLETIM"]
+    },
+    {
+      "id": "escola",
+      "nome": "Escola: Estrutura",
+      "palavras": ["DIRETORIA", "SECRETARIA", "CORREDOR", "MURAL", "PORTARIA"]
+    },
+    {
+      "id": "shopping",
+      "nome": "Shopping: Perfumaria",
+      "palavras": ["PERFUME", "BATOM", "CREME", "ESTOJO", "MAQUIAGEM"]
+    },
+    {
+      "id": "shopping",
+      "nome": "Shopping: Praça de Alimentação",
+      "palavras": ["BANDEJA", "LANCHE", "REFRIGERANTE", "RESTAURANTE", "MESA"]
+    },
+    {
+      "id": "shopping",
+      "nome": "Shopping: Cinema",
+      "palavras": ["PIPOCA", "FILME", "INGRESSO", "TELA", "POLTRONA"]
+    },
+    {
+      "id": "shopping",
+      "nome": "Shopping: Loja de Roupas",
+      "palavras": ["CABIDE", "PROVADOR", "MANEQUIM", "VITRINE", "ROUPA"]
+    },
+    {
+      "id": "shopping",
+      "nome": "Shopping: Brinquedos",
+      "palavras": ["BONECA", "CARRINHO", "URSO", "JOGO", "PELÚCIA"]
+    }
+  ]
+}

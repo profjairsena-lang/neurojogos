@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="mapa.js" defer></script>
+        <script src="history.js" defer></script>
+
+
+    <title>Cidade Interativa - Zoom no Mapa</title>
+    <style>
+     
+      .mapa {
+                border-radius: 22px;
+
+         border: 6px solid rgb(200,  162,  200);
+  box-shadow:
+    0 -6px 6px rgba(0, 0, 0, 0.25),
+    inset 10px 10px 8px -12px rgba(0, 0, 0, 0.8);
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin-top: 20px;
+      }
+      .mapa img {
+        width: 100%;
+        border-radius: 22px;
+        display: block;
+      }
+
+      /* Ajuste global para todos os alvos de zoom */
+      .alvo {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #ffcc00;
+        background-image: url("avatar/mapa.png"); /* O teu mapa completo */
+        background-size: 1300% auto; /* Aumenta o zoom */
+        background-repeat: no-repeat;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+      }
+
+      .alvo:hover {
+        transform: scale(5.5);
+        z-index: 100;
+      }
+
+
+    </style>
+    <link rel="stylesheet" href="style2.css" />   
+        <link rel="stylesheet" href="modals.css" />   
+    <link rel="stylesheet" href="botao.css" />   
+
+  </head>
+  <body>
+ 
+
+ 
+        
+    <!-- GAME SCREEN -->
+    <div id="game-screen">
+     
+
+
+      <div class="score-row">
+
+        <div class="score-card sc1 active-turn" id="sc1" onclick="openAvPicker(1)" style="cursor: pointer">
+          <div class="sav" id="gav1">👦</div>
+          <div class="sinfo">
+            <div class="slabel" id="gn1">Jogador 1</div>
+            <div class="sval">Vidas: <span id="gs1">❤️❤️❤️❤️❤️</span></div>
+          </div>
+        </div>
+        <div class="score-card sc2" id="sc2" onclick="openAvPicker(2)" style="cursor: pointer">
+          <div class="sav" id="gav2">👽</div>
+          <div class="sinfo">
+            <div class="slabel" id="gn2">Jogador 2</div>
+            <div class="sval">Vidas: <span id="gs2">❤️❤️❤️❤️❤️</span></div>
+          </div>
+        </div>
+           <button class="hbtn" onclick="exitGame()">
+            <span style="font-size: 22px margin:10px">🏠</span><span>Início</span>
+          </button>
+      </div>
+
+
+
+    <div class="mapa">
+      <img src="avatar/mapa.png" alt="Cidade Palavra Colorida" />
+      <div
+        class="alvo"
+        style="top: 22%; left: 12%; background-position: 0% 0%"
+        title="Aeroporto"
+        onclick="openLocalModal('aeroporto')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 24%; left: 47%; background-position: 50% 14%"
+        title="Shopping"
+        onclick="openLocalModal('shopping')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 32%; left: 62%; background-position: 66% 23%"
+        title="Escola"
+        onclick="openLocalModal('escola')"
+      ></div>
+
+      <div
+        class="alvo"
+        style="top: 47%; left: 19%; background-position: 20% 42%"
+        title="Bombeiros"
+        onclick="openLocalModal('bombeiros')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 42%; left: 48%; background-position: 48% 35%"
+        title="Casa da Vovó"
+        onclick="openLocalModal('casa_vovo')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 47%; left: 76%; background-position: 79% 45%"
+        title="Casa da Família"
+        onclick="openLocalModal('casa_familia')"
+      ></div>
+
+      <div
+        class="alvo"
+        style="top: 70%; left: 20%; background-position: 23% 68%"
+        title="Sorveteria"
+        onclick="openLocalModal('sorveteria')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 71%; left: 45%; background-position: 48% 67%"
+        title="Doceria"
+        onclick="openLocalModal('doceria')"
+      ></div>
+      <div
+        class="alvo"
+        style="top: 59%; left: 65%; background-position: 67% 56%"
+        title="Praça/Parque"
+        onclick="openLocalModal('praca_parque')"
+      ></div>
+    </div>
+
+    <!-- criar novo modal com opções de categorias para escolher, e ao clicar em uma categoria, redirecionar para a tela de jogo com a categoria selecionada -->
+
+<!-- MODAL DE LOCAIS -->
+<div class="overlay" id="local-modal">
+  <div class="mbox local-box">
+    <h2 class="score-card" id="local-title" style="justify-content: center; color: white;">Lista dos Locais</h2>
+
+    <div id="local-options" class="local-options"></div>
+
+    <button class="mbtn" onclick="closeLocalModal()">
+      Fechar
+    </button>
+  </div>
+</div>
+
+    <!-- Modal de Avatar no Mapa -->
+    <div class="overlay" id="av-modal">
+      <div class="mbox">
+        <h2>🎨 Trocar Personagem</h2>
+        <div class="av-grid" id="av-grid"></div>
+        <button class="mbtn" onclick="closeM('av-modal')">Confirmar</button>
+      </div>
+    </div>
+
+    <!-- historico de jogadas -->
+
+       <div class="overlay" id="hist-modal">
+      <div class="mbox" style="width: 440px">
+        <h2>📊 Histórico de Jogadas</h2>
+        <div class="hlist" id="hlist"></div>
+        <button class="mbtn" onclick="closeM('hist-modal')">Fechar</button>
+      </div>
+    </div>
+    <script>
+    
+    function createClouds() {
+  for (let i = 0; i < 10; i++) {
+    const cloud = document.createElement("div");
+    cloud.className = "cloud";
+
+    const w = 120 + Math.random() * 220;
+    const h = w * 0.3;
+
+    cloud.style.width = w + "px";
+    cloud.style.height = h + "px";
+
+    // posição inicial aleatória no Y
+    cloud.style.top = Math.random() * 90 + "vh";
+
+    // começa fora da tela (esquerda)
+    cloud.style.left = (-Math.random() * 100) + "vw";
+
+    // velocidade diferente para cada nuvem
+    const duration = 30 + Math.random() * 60; // 30s a 90s
+    cloud.style.animationDuration = duration + "s";
+
+    // atraso aleatório
+    cloud.style.animationDelay = "-" + Math.random() * 60 + "s";
+
+    // leve variação de transparência
+    cloud.style.opacity = 0.3 + Math.random() * 0.5;
+
+    document.body.appendChild(cloud);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", createClouds);
+
+  function openLocalModal(localId) {
+    const modal = document.getElementById("local-modal");
+    const options = document.getElementById("local-options");
+
+    options.innerHTML = "";
+
+    // Busca todas as subcategorias no JSON que possuem esse ID (ex: 'shopping' trará Cinema, Perfumaria, etc)
+    const categoriasFiltradas = G.allCats.filter(c => c.id === localId);
+
+    if (categoriasFiltradas.length === 0) return;
+
+    categoriasFiltradas.forEach((item) => {
+      const btn = document.createElement("button");
+      btn.className = "local-btn";
+      btn.textContent = item.nome; 
+
+      btn.onclick = () => {
+        // Enviamos o ID do local para que o jgplay.html carregue o conjunto completo de subcategorias associadas
+        window.location.href = "jgplay.html?cat=" + encodeURIComponent(item.id);
+      };
+      options.appendChild(btn);
+    });
+
+    modal.classList.add("open");
+  }
+
+  function closeLocalModal() {
+    document.getElementById("local-modal").classList.remove("open");
+  }
+</script>
+   </body>
+</html>
