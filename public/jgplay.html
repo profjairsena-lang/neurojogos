@@ -18,11 +18,15 @@
           gap: 12px;
           margin-top: 20px;
         "
-      >
-        <button class="hbtn" onclick="playAgain()" style="width: 100%">
-          <span style="font-size: 22px">🔄</span><span>Joga Novamente</span>
-        </button>
+      >        <div style="display: flex; gap: 8px; justify-content: center">
 
+        <button class="hbtn" onclick="playAgain()" style="width: 50%">
+          <span style="font-size: 12px">🔄</span><span>Joga</span>
+        </button>
+        <button class="hbtn" onclick="exitGame()" style="width: 50%>
+          <span style="font-size: 22px">🏠</span><span>Início</span>
+        </button>
+</div>
         <!-- SIDEBAR JOGADOR 1 -->
         <div
           class="player-sidebar sidebar-left"
@@ -117,9 +121,7 @@
           <button class="hbtn" onclick="location.href = 'mapa.html'">
             <span style="font-size: 22px">🗺️</span><span>Mapa</span>
           </button>
-          <button class="hbtn" onclick="exitGame()">
-            <span style="font-size: 22px">🏠</span><span>Início</span>
-          </button>
+
           <button class="hbtn" onclick="openHist()">
             <span style="font-size: 22px">📊</span><span>Histórico</span>
           </button>

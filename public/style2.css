@@ -6,18 +6,26 @@
 body {
   font-family: "Baloo 2", "Poppins", sans-serif;
   background: linear-gradient(180deg, #87ceeb 0%, #98d8c8 50%, #7ec850 100%);
-  min-height: 100vh;
+
+  /* 🛠️ SOLUÇÃO 1: Usa a altura dinâmica moderna para mobile */
+  min-height: 100dvh;
+
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho do body */
 }
 
 /* 🎮 GAME SCREEN */
 #game-screen {
   background: #fbe6c5;
   border-radius: 28px;
-  width: 980px;
+
+  /* 🛠️ SOLUÇÃO 2: Torna o container responsivo */
+  width: 100%;
+  max-width: 980px;
+
   margin-top: 20px;
   padding: 40px;
   box-shadow:
@@ -26,6 +34,7 @@ body {
   border: 3px solid #e8d5a0;
   position: relative;
   z-index: 2;
+  box-sizing: border-box; /* Evita que o padding de 40px estoure o tamanho */
 }
 .score {
   display: flex;

@@ -4,6 +4,7 @@ node_modules/
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
+DASHBOARD_PROJETO.txt
 
 # Logs e temporários
 *.log
