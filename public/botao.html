@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Botão Estilizado</title>
+    <style>
+    
+
+      .sc1 {
+        position: relative;
+        display: inline-block;
+        margin: 20px;
+      }
+
+      .sc1 a {
+        color: white;
+        font-family: Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+        text-align: center;
+        text-decoration: none;
+        background: linear-gradient(180deg, #87ceeb 0%, #98d8c8 50%, #7ec850 100%);
+        display: block;
+        position: relative;
+        padding: 20px 40px;
+
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        text-shadow: 0px 1px 0px #000;
+        filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+        -webkit-box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          0 10px 0 #009122;
+        -moz-box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          0 10px 0 #009122;
+        box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          0 10px 0 #009122;
+
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+      }
+
+      .sc1 a:active {
+        top: 10px;
+        background-color: #f78900;
+
+        -webkit-box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          inset 0 -3px 0 #915100;
+        -moz-box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          inset 0 -3px 0 #915100;
+        box-shadow:
+          inset 0 1px 0 #ffe5c4,
+          inset 0 -3px 0 #915100;
+      }
+
+      .sc1:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        padding: 4px;
+        position: absolute;
+        bottom: -15px;
+        left: -4px;
+        z-index: -1;
+        background-color: #2b1800;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div ontouchstart="">
+      <div class="button">
+        <a href="#">Mobile First</a>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-card sc1 active-turn" id="sc1">
+       <a> <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="sav" id="gav1">👦</div>
+        <div class="sinfo">
+          <div class="slabel" id="gn1">Jogador 1</div>
+
+          <div class="sval">Vidas:</div>
+        </div>
+        <span id="gs1">❤️❤️❤️❤️❤️</span>
+      </div>
+</a>
+
+
+      <div class="score-card sc2" id="sc2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="sav" id="gav2">👽</div>
+        <div class="sinfo">
+          <div class="slabel" id="gn2">Jogador 2</div>
+          <div class="sval">Vidas:</div>
+        </div>
+        <span id="gs2">❤️❤️❤️❤️❤️</span>
+      </div>
+      <button class="hbtn" onclick="exitGame()">
+        <span style="font-size: 22px">🏠</span><span>Início</span>
+      </button>
+    </div>
+  </body>
+</html>

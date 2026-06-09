@@ -1,0 +1,425 @@
+/* card.css - Estilos dos Cartões dos Jogadores e Placar */
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+
+/* 🧩 Container do Placar */
+.score {
+  display: flex;
+  width: 60px;
+  max-width: 850px;
+  gap: 10px;
+  align-items: stretch;
+  padding: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.score-row {
+  display: flex;
+  gap: 15px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* 🧑‍🚀 Score Card Base */
+.score-card {
+  width: 100%;
+  flex: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  border-radius: 20px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 12px;
+  will-change: transform; /* Otimiza a renderização para evitar tremores no conteúdo */
+  transition: all 0.4s cubic-bezier(0.19, 0.885, 0.32, 1.29);
+}
+
+/* Destaque do turno ativo (Efeito Expand) */
+.score-card.active-turn {
+  max-width: 100%;
+  opacity: 1;
+  transform: scale(1.02); /* Reduzido para caber melhor na sidebar */
+  z-index: 10;
+}
+
+/* ✨ Animação de Bordas (Skip Results Iframe Style) */
+.score-card.active-turn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--cor-base, #ffd700);
+  opacity: 0.1;
+  transition: 0.2s opacity ease-in-out;
+  z-index: 1;
+}
+
+.score-card.active-turn > span {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  pointer-events: none; /* Garante que a animação não intercepte cliques */
+}
+
+/* Topo */
+.score-card.active-turn > span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+
+  animation: animateTop 2s linear infinite;
+}
+
+/* Direita */
+.score-card.active-turn > span:nth-child(2) {
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 4px;
+
+  animation: animateRight 2s linear -1s infinite;
+}
+
+/* Baixo */
+.score-card.active-turn > span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+
+  animation: animateBottom 2s linear infinite;
+}
+
+/* Esquerda */
+.score-card.active-turn > span:nth-child(4) {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+
+  animation: animateLeft 2s linear -1s infinite;
+}
+
+@keyframes animateTop {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animateRight {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes animateBottom {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes animateLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* 👤 Avatar do Jogador (sav) */
+.sav {
+  background: color-mix(in srgb, var(--cor-base, #6ae36a) 70%, rgb(95, 86, 86))
+    100%;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  position: relative; /* Necessário para o z-index funcionar */
+  z-index: 5; /* Eleva o avatar acima da animação */
+  border: 6px solid rgb(200,  162,  200);
+  box-shadow:
+    0 -6px 6px rgba(0, 0, 0, 0.1),
+    inset 10px 10px 8px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* 📝 Informações e Vidas */
+.sinfo {
+  color: #222121;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0px;
+  min-width: 0;
+  position: relative;
+  z-index: 5;
+  /* Estabilização absoluta do conteúdo interno */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.slabel {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 12px;
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  padding: 2px 0;
+  text-shadow:
+    0 0.1em 20px rgba(0, 0, 0, 1),
+    0.05em -0.03em 0 rgba(0, 0, 0, 1),
+    0.05em 0.005em 0 rgba(0, 0, 0, 1),
+    0em 0.08em 0 rgba(0, 0, 0, 1),
+    0.05em 0.08em 0 rgba(0, 0, 0, 1),
+    0px -0.03em 0 rgba(0, 0, 0, 1),
+    -0.03em -0.03em 0 rgba(0, 0, 0, 1),
+    -0.03em 0.08em 0 rgba(0, 0, 0, 1),
+    -0.03em 0 0 rgba(0, 0, 0, 1);
+}
+
+.slabel span {
+  transform: scale(0.9);
+  display: inline-block;
+}
+
+.slabel span:first-child {
+  animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite
+    alternate;
+}
+
+.slabel span:last-child {
+  animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
+    infinite alternate;
+}
+
+@keyframes bop {
+  0% {
+    transform: scale(0.9);
+  }
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bopB {
+  0% {
+    transform: scale(0.9);
+  }
+  80%,
+  100% {
+    transform: scale(1) rotateZ(-3deg);
+  }
+}
+
+.sval {
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffe8d6;
+  padding-left: 5px;
+  word-break: break-word;
+  display: block;
+  /* Garante que o bloco de vidas não herde animações de tremor ou escala de outros elementos */
+  animation: none !important;
+  transform: none !important;
+}
+
+#gs1,
+#gs2 {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2px; /* Espaçamento entre o nome e as vidas */
+  animation: none !important;
+  transform: none !important;
+}
+
+/* 🎨 Estilos Específicos (sc1 e sc2) */
+/* 
+.sc2 {
+  border-radius: 12px;
+  border: 3px outset #888;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  max-width: 200px;
+  color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+  font-family: inherit;
+  font-size: 28px;
+  font-weight: bolder;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--cor-base, #6ae36a) 70%, black) 100%;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  transition: 0.2s;
+} */
+
+/* ❤️ Animações de Vida */
+@keyframes heartExplode {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  10% {
+    transform: scale(1.1) translate(-2px, 2px);
+  }
+  20% {
+    transform: scale(1) translate(2px, -2px);
+  }
+  30% {
+    transform: scale(1.1) translate(-2px, -1px);
+  }
+  40% {
+    transform: scale(1.05) translate(2px, 1px);
+    filter: drop-shadow(0 0 2px red);
+  }
+  60% {
+    transform: scale(1.6);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(105, 0, 0, 0.9));
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(105, 0, 0, 0));
+  }
+}
+
+.heart-icon {
+  display: inline-block !important;
+  transition: all 0.2s;
+}
+.heart-pop {
+  display: inline-block !important;
+  animation: heartExplode 1.2s ease-in-out forwards;
+  will-change: transform, opacity;
+}
+
+/* 📱 Ajustes Mobile */
+@media (max-width: 600px) {
+  .score-card {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  /* Ajustes para os cards quando posicionados dentro das sidebars */
+  .player-sidebar .score-card {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+
+  .player-sidebar .score-card.active-turn {
+    transform: scale(
+      1.05
+    ); /* Reduzido para não transbordar o limite lateral da sidebar */
+  }
+
+  .sc1 {
+    background: url("avatar/card1.png") no-repeat top left;
+  }
+
+  .sc2 {
+    background: url("avatar/card2.png") no-repeat top left;
+  }
+}
+
+.sc1,
+.sc2,
+.sc3 {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+
+  /* background: linear-gradient(
+    to bottom,
+    rgba(105, 105, 105, 0),
+    var(--cor-base, #ea7467)
+  ); */
+}
+
+.sc1 a,
+.sc2 a,
+.sc3 a {
+  width: 100%;
+  height: 80px;
+
+  /* background: linear-gradient(
+    to bottom,
+    rgba(244, 242, 242, 0.521),
+    var(--cor-base, #ea7467)
+  ); */
+  display: flex;
+
+  padding: 10px;
+
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* position: relative; */
+
+  /* -webkit-box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    0 10px 0 #2a2929;
+  -moz-box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    0 10px 0 #2a2929;
+  box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    0 1px 0px #2a2929; */
+}
+
+.sc1:active,
+.sc2:active,
+.sc3:active {
+  /* top: 10px;
+
+  -webkit-box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    inset 0 -3px 0 #915100;
+  -moz-box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    inset 0 -3px 0 #915100;
+  box-shadow:
+    inset 0 1px 0 #ffe5c4,
+    inset 0 -3px 0 #915100; */
+}
+
+.sc1:after,
+.sc2:after,
+.sc3:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  position: absolute;
+  bottom: -15px;
+  left: -4px;
+  z-index: -1;
+}

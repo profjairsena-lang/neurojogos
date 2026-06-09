@@ -25,6 +25,8 @@ body {
     0 8px 32px rgba(0, 0, 0, 0.18),
     inset 0 2px 0 rgba(255, 255, 255, 0.8);
   border: 0px solid #e8d5a0;
+  position: relative;
+  z-index: 2;
 }
 .game-title {
   text-align: center;
@@ -254,7 +256,7 @@ body {
 .player-sidebar {
   background: #fef6e4;
   border-radius: 28px;
-  width: 160px;
+  width: 200px;
   margin-top: 20px;
   padding: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -292,7 +294,7 @@ body {
 #game-screen {
   background: #fbe6c5;
   border-radius: 28px;
-  width: 980px;
+  width: 580px;
   margin-top: 20px;
   padding: 40px;
   box-shadow:
@@ -303,86 +305,6 @@ body {
   z-index: 2;
 }
 
-/* 🧩 Score Row */
-.score-row {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-  margin-bottom: 16px;
-}
-
-/* 🧑‍🚀 Score Card */
-.score-card {
-  flex: 1;
-  border-radius: 20px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.3s ease;
-}
-
-/* Destaque do turno ativo */
-.score-card.active-turn {
-  opacity: 1;
-  transform: translateY(-8px);
-  /* box-shadow:
-    0 12px 0 #ffd700,
-    0 20px 40px rgba(0, 0, 0, 0.25); */
-}
-
-/* Avatar Icone do jogador com borda 3D */
-.sav {
-  background: color-mix(in srgb, var(--cor-base, #6ae36a) 70%, black) 100%;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: left;
-  padding-bottom: 0px;
-  align-items: flex-end;
-  font-size: 52px;
-  border: 6px solid rgb(200,  162,  200);
-  box-shadow:
-    0 -6px 6px rgba(0, 0, 0, 0.25),
-    inset 10px 10px 8px -12px rgba(0, 0, 0, 0.8);
-}
-
-/* Informações do jogador */
-.sinfo {
-  color: #222121;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.slabel {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.sval {
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-/* Ajuste do tamanho do coração para metade do valor original */
-#gs1,
-#gs2 {
-  font-size: 16px;
-  vertical-align: middle;
-}
-
-/* Cards dos jogadores */
-.sc1 {
-  background: url("avatar/card1.png") no-repeat top left;
-}
-
-.sc2 {
-  background: url("avatar/card2.png") no-repeat top left;
-}
 .hbtn {
   background: #fff8e7;
   border-radius: 14px;
@@ -443,6 +365,7 @@ body {
   justify-content: center;
   gap: 7px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .pip {
   width: 15px;
@@ -1128,11 +1051,4 @@ body {
   display: inline-block !important;
   animation: heartExplode 1.2s ease-in-out forwards;
   will-change: transform, opacity;
-}
-
-/* Ajuste do tamanho do coração nos cards */
-#gs1,
-#gs2 {
-  font-size: 16px;
-  vertical-align: middle;
 }

@@ -23,9 +23,8 @@ body {
   border-radius: 28px;
 
   /* 🛠️ SOLUÇÃO 2: Torna o container responsivo */
-  width: 100%;
-  max-width: 980px;
-
+  max-width: 680px;
+  min-width: 320px;
   margin-top: 20px;
   padding: 40px;
   box-shadow:
@@ -35,98 +34,6 @@ body {
   position: relative;
   z-index: 2;
   box-sizing: border-box; /* Evita que o padding de 40px estoure o tamanho */
-}
-.score {
-  display: flex;
-  width: 890px;
-  gap: 10px;
-  align-items: stretch;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-/* 🧩 Score Row */
-.score-row {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-}
-
-/* 🧑‍🚀 Score Card */
-.score-card {
-  flex: 1;
-  width: 350px;
-  height: 110px;
-  border-radius: 20px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.3s ease;
-}
-
-/* Destaque do turno ativo */
-.score-card.active-turn {
-  opacity: 1;
-}
-
-/* Avatar */
-/* Avatar dentro do card */
-/* Avatar com borda 3D */
-.sav {
-  background: color-mix(in srgb, var(--cor-base, #6ae36a) 70%, black) 100%;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  justify-content: left;
-  padding-bottom: 0px;
-  align-items: flex-end;
-  font-size: 52px;
-  border: 6px solid rgb(200,  162,  200);
-  box-shadow:
-    0 -6px 6px rgba(0, 0, 0, 0.25),
-    inset 10px 10px 8px -12px rgba(0, 0, 0, 0.8);
-}
-
-/* Informações do jogador */
-.sinfo {
-  color: #222121;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0px;
-}
-
-.slabel {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #ffe8d6;
-  padding-left: 5px;
-}
-
-.sval {
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1;
-  color: #ffe8d6;
-  padding-left: 5px;
-}
-
-/* Ajuste do tamanho do coração no placar do mapa */
-#gs1,
-#gs2 {
-  font-size: 16px;
-  vertical-align: middle;
-}
-
-/* Cards dos jogadores */
-.sc1 {
-  background: url("avatar/card1.png") no-repeat top left;
-}
-
-.sc2 {
-  background: url("avatar/card2.png") no-repeat top left;
 }
 .hbtn {
   background: #fff8e7;
@@ -152,6 +59,14 @@ body {
   background: #ffe8d6;
   transform: scale(1.05);
 }
+
+/* Ajustes específicos para Android/Mobile */
+@media (max-width: 600px) {
+  #game-screen {
+    padding: 15px;
+  }
+}
+
 /* MODALS */
 .overlay {
   display: none;
@@ -216,47 +131,32 @@ body {
   }
 }
 
-@keyframes heartExplode {
-  /* 0% a 40%: Vibração/Tremor rápido */
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  10% {
-    transform: scale(1.1) translate(-2px, 2px);
-  }
-  20% {
-    transform: scale(1) translate(2px, -2px);
-  }
-  30% {
-    transform: scale(1.1) translate(-2px, -1px);
-  }
-  40% {
-    transform: scale(1.05) translate(2px, 1px);
-    filter: drop-shadow(0 0 2px red);
-  }
-
-  /* 40% a 100%: Expansão rápida e "estouro" (desaparecer) */
-  60% {
-    transform: scale(1.6);
-    opacity: 0.9;
-    filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.9));
-  }
-  100% {
-    transform: scale(2.5);
-    opacity: 0;
-    filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0));
-  }
+/* 📍 Tooltip Personalizado para os Alvos do Mapa */
+.alvo {
+  position: absolute;
+  width: 44px; /* Área de clique */
+  height: 44px;
+  cursor: pointer;
+  z-index: 10; /* Garante que fique acima da imagem do mapa */
+  overflow: visible; /* Garante que o tooltip não seja cortado */
 }
 
-/* IMPORTANTE: Mudamos para inline-block e adicionamos um 
-   default para garantir que o navegador aceite o 'transform' */
-.heart-icon {
-  display: inline-block !important;
-  transition: all 0.2s;
-}
-
-.heart-pop {
-  display: inline-block !important;
-  animation: heartExplode 1.2s ease-in-out forwards;
-  will-change: transform, opacity;
+/* Criando o balão de texto (fundo branco, letra cinza) */
+.alvo:hover::before {
+  content: attr(data-title); /* Busca o texto do novo atributo data-title */
+  display: block;
+  position: absolute;
+  bottom: 125%; /* Posiciona acima do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #555555; /* Letra cinza */
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  pointer-events: none;
 }

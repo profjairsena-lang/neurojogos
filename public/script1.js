@@ -25,8 +25,8 @@ const AVATARS = [
 ];
 
 const PALETTE = [
-  ["#580e61", "#f1dc21", "#e34d4d", "#57f135", "#8ec6ec", "#af5968"],
-  ["#580e61", "#f1dc21", "#e34d4d", "#57f135", "#8ec6ec", "#af5968"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
 ];
 let G = {
   allCats: [], // loaded from JSON or defaults

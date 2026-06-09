@@ -114,8 +114,8 @@ function updateAvatarUI(target, path) {
 
 const PALETTE = [
   // Paleta de cores para os temas do jogo (não está sendo utilizada atualmente)
-  ["#ea7467", "#de914d", "#e3c54d", "#abe6c4", "#8ec6ec", "#cc98e1"],
-  ["#ea7467", "#de914d", "#e3c54d", "#abe6c4", "#8ec6ec", "#cc98e1"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
 ];
 
 // Ao carregar, tenta buscar o arquivo frases.json com as categorias e palavras
@@ -619,7 +619,7 @@ function renderHearts(container, count) {
     span.className = "heart-icon";
     span.textContent = "❤️"; // Ou seu elemento/SVG de coração
     span.style.display = "inline-block";
-    span.style.margin = "0 2px";
+    span.style.margin = "0 3px 0 0"; // Espaço apenas à direita para alinhar à esquerda
     container.appendChild(span);
   }
 }

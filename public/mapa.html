@@ -32,32 +32,11 @@
         display: block;
       }
 
-      /* Ajuste global para todos os alvos de zoom */
-      .alvo {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: 2px solid #ffcc00;
-        background-image: url("avatar/mapa.png"); /* O teu mapa completo */
-        background-size: 1300% auto; /* Aumenta o zoom */
-        background-repeat: no-repeat;
-        cursor: pointer;
-        overflow: hidden;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s;
-      }
-
-      .alvo:hover {
-        transform: scale(5.5);
-        z-index: 100;
-      }
-
-
     </style>
-    <link rel="stylesheet" href="style2.css" />   
-        <link rel="stylesheet" href="modals.css" />   
-    <link rel="stylesheet" href="botao.css" />   
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="modals.css" />
+    <link rel="stylesheet" href="style_buttons.css" />
+    <link rel="stylesheet" href="card.css" />
 
   </head>
   <body>
@@ -71,84 +50,87 @@
 
 
       <div class="score-row">
+        <div class=" sc1 active-turn" id="sc1" >
+          <a><div class="sav" id="gav1">👦</div>
+          <div class="sinfo"><div class="slabel" id="gn1">Jogador 1</div><span id="gs1">❤️❤️❤️❤️❤️</span>
+          </div> 
+          </a>
+        </div>
 
-        <div class="score-card sc1 active-turn" id="sc1" onclick="openAvPicker(1)" style="cursor: pointer">
-          <div class="sav" id="gav1">👦</div>
-          <div class="sinfo">
-            <div class="slabel" id="gn1">Jogador 1</div>
-            <div class="sval">Vidas: <span id="gs1">❤️❤️❤️❤️❤️</span></div>
+
+        <div class=" sc2" id="sc2" >
+         <a> <div class="sav" id="gav2">👽</div>
+          <div class="sinfo">          <div class="slabel" id="gn2">Jogador 2</div>
+        <span id="gs2">❤️❤️❤️❤️❤️</span>
           </div>
         </div>
-        <div class="score-card sc2" id="sc2" onclick="openAvPicker(2)" style="cursor: pointer">
-          <div class="sav" id="gav2">👽</div>
-          <div class="sinfo">
-            <div class="slabel" id="gn2">Jogador 2</div>
-            <div class="sval">Vidas: <span id="gs2">❤️❤️❤️❤️❤️</span></div>
-          </div>
-        </div>
-           <button class="hbtn" onclick="exitGame()">
-            <span style="font-size: 22px margin:10px">🏠</span><span>Início</span>
-          </button>
+        </a>
+
+        <div class=" sc3"  >
+        
+          
+  <a> <button class="slabel" onclick="exitGame()"><span>🏠</span><span>Início</span></button> </a>          </div>  </a>
       </div>
 
-
+     
+  
 
     <div class="mapa">
       <img src="avatar/mapa.png" alt="Cidade Palavra Colorida" />
       <div
         class="alvo"
         style="top: 22%; left: 12%; background-position: 0% 0%"
-        title="Aeroporto"
+        data-title="Aeroporto"
         onclick="openLocalModal('aeroporto')"
       ></div>
       <div
         class="alvo"
         style="top: 24%; left: 47%; background-position: 50% 14%"
-        title="Shopping"
+        data-title="Shopping"
         onclick="openLocalModal('shopping')"
       ></div>
       <div
         class="alvo"
         style="top: 32%; left: 62%; background-position: 66% 23%"
-        title="Escola"
+        data-title="Escola"
         onclick="openLocalModal('escola')"
       ></div>
 
       <div
         class="alvo"
         style="top: 47%; left: 19%; background-position: 20% 42%"
-        title="Bombeiros"
+        data-title="Bombeiros"
         onclick="openLocalModal('bombeiros')"
       ></div>
       <div
         class="alvo"
         style="top: 42%; left: 48%; background-position: 48% 35%"
-        title="Casa da Vovó"
+        data-title="Casa da Vovó"
         onclick="openLocalModal('casa_vovo')"
       ></div>
       <div
         class="alvo"
         style="top: 47%; left: 76%; background-position: 79% 45%"
-        title="Casa da Família"
+        data-title="Casa da Família"
         onclick="openLocalModal('casa_familia')"
       ></div>
 
       <div
         class="alvo"
         style="top: 70%; left: 20%; background-position: 23% 68%"
-        title="Sorveteria"
+        data-title="Sorveteria"
         onclick="openLocalModal('sorveteria')"
       ></div>
       <div
         class="alvo"
         style="top: 71%; left: 45%; background-position: 48% 67%"
-        title="Doceria"
+        data-title="Doceria"
         onclick="openLocalModal('doceria')"
       ></div>
       <div
         class="alvo"
         style="top: 59%; left: 65%; background-position: 67% 56%"
-        title="Praça/Parque"
+        data-title="Praça/Parque"
         onclick="openLocalModal('praca_parque')"
       ></div>
     </div>
@@ -250,6 +232,8 @@ window.addEventListener("DOMContentLoaded", createClouds);
   function closeLocalModal() {
     document.getElementById("local-modal").classList.remove("open");
   }
+
+  
 </script>
    </body>
 </html>

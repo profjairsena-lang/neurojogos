@@ -219,5 +219,40 @@
         <button class="mbtn" onclick="closeM('av-modal')">Confirmar</button>
       </div>
     </div>
+
+    <script>
+      function createClouds() {
+        for (let i = 0; i < 10; i++) {
+          const cloud = document.createElement("div");
+          cloud.className = "cloud";
+
+          const w = 120 + Math.random() * 220;
+          const h = w * 0.3;
+
+          cloud.style.width = w + "px";
+          cloud.style.height = h + "px";
+
+          // posição inicial aleatória no Y
+          cloud.style.top = Math.random() * 90 + "vh";
+
+          // começa fora da tela (esquerda)
+          cloud.style.left = -Math.random() * 100 + "vw";
+
+          // velocidade diferente para cada nuvem
+          const duration = 30 + Math.random() * 60; // 30s a 90s
+          cloud.style.animationDuration = duration + "s";
+
+          // atraso aleatório
+          cloud.style.animationDelay = "-" + Math.random() * 60 + "s";
+
+          // leve variação de transparência
+          cloud.style.opacity = 0.3 + Math.random() * 0.5;
+
+          document.body.appendChild(cloud);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", createClouds);
+    </script>
   </body>
 </html>

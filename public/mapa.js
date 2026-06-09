@@ -193,8 +193,8 @@ const AVATARS = [
 ];
 
 const PALETTE = [
-  ["#580e61", "#f1dc21", "#e34d4d", "#57f135", "#8ec6ec", "#af5968"],
-  ["#580e61", "#f1dc21", "#e34d4d", "#57f135", "#8ec6ec", "#af5968"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
+  ["#ea7467", "#eaab67", "#ead967", "#a4ea67", "#6797ea", "#ea67ad"],
 ];
 
 /* =====================================================================
@@ -218,3 +218,15 @@ window.addEventListener("DOMContentLoaded", async () => {
     if (typeof DEFAULT_CATS !== "undefined") G.allCats = DEFAULT_CATS;
   }
 });
+
+function exitGame() {
+  if (
+    confirm(
+      "Deseja realmente sair? Isso liberará todos os locais do mapa e resetará seu progresso.",
+    )
+  ) {
+    localStorage.removeItem("completedLocs");
+    localStorage.removeItem("gameData");
+    window.location.href = "index.html";
+  }
+}

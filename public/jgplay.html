@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desafio das Palavras</title>
     <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="card.css" />
     <script src="script2.js" defer></script>
     <script src="history.js" defer></script>
   </head>
@@ -18,53 +19,61 @@
           gap: 12px;
           margin-top: 20px;
         "
-      >        <div style="display: flex; gap: 8px; justify-content: center">
-
-        <button class="hbtn" onclick="playAgain()" style="width: 50%">
-          <span style="font-size: 12px">🔄</span><span>Joga</span>
-        </button>
-        <button class="hbtn" onclick="exitGame()" style="width: 50%>
-          <span style="font-size: 22px">🏠</span><span>Início</span>
-        </button>
-</div>
+      >
         <!-- SIDEBAR JOGADOR 1 -->
         <div
           class="player-sidebar sidebar-left"
           id="sidebar-p1"
           style="margin-top: 0"
         >
-          <div class="sidebar-header sc1">Conquistas</div>
+          <!-- CARD DO JOGADOR 1 -->
+          <div class="score-card sc1 active-turn" id="sc1">
+            <a>
+              <div class="sav" id="gav1">👦</div>
+              <div class="sinfo">
+                <div class="slabel" id="gn1">Jogador 1</div>
+                <span id="gs1">❤️❤️❤️❤️❤️</span>
+              </div>
+            </a>
+          </div>
+          <div class="sidebar-header sc1">
+            <span class="slabel">Conquistas</span>
+          </div>
           <div class="trophy-grid" id="t-grid-1"></div>
         </div>
       </div>
+      <!-- Fecha a coluna esquerda corretamente -->
 
       <!-- GAME SCREEN -->
       <div id="game-screen">
-        <div class="score-row">
+        <div
+          class="score-row"
+          style="justify-content: center; margin-bottom: 20px"
+        >
           <div
-            class="score-card sc1 active-turn"
-            id="sc1"
-            onclick="openAvPicker(1)"
-            style="cursor: pointer"
+            style="
+              display: flex;
+              gap: 8px;
+              justify-content: center;
+              width: 100%;
+            "
           >
-            <div class="sav" id="gav1">👦</div>
-            <div class="sinfo">
-              <div class="slabel" id="gn1">Jogador 1</div>
-              <div class="sval">Vidas: <span id="gs1">❤️❤️❤️❤️❤️</span></div>
-            </div>
+            <a>
+              <button class="slabel" onclick="exitGame()">
+                <span>🗺️</span><span>Início</span>
+              </button>
+            </a>
+            <a
+              ><button class="slabel" onclick="location.href = 'mapa.html'">
+                <span>🗺️</span><span>Mapa</span>
+              </button></a
+            >
+            <a
+              ><button class="slabel" onclick="openHist()">
+                <span>📊</span><span>Histórico</span>
+              </button></a
+            >
           </div>
-          <div class="score-card sc2" id="sc2">
-            <div class="sav" id="gav2">👽</div>
-            <div class="sinfo">
-              <div class="slabel" id="gn2">Jogador 2</div>
-              <div class="sval">Vidas: <span id="gs2">❤️❤️❤️❤️❤️</span></div>
-            </div>
-          </div>
-          <img
-            src="avatar/textoh2.png"
-            alt="Palavra Colorida"
-            style="max-width: 80%; height: auto"
-          />
         </div>
 
         <div class="pips-row">
@@ -117,23 +126,25 @@
           margin-top: 20px;
         "
       >
-        <div style="display: flex; gap: 8px; justify-content: center">
-          <button class="hbtn" onclick="location.href = 'mapa.html'">
-            <span style="font-size: 22px">🗺️</span><span>Mapa</span>
-          </button>
-
-          <button class="hbtn" onclick="openHist()">
-            <span style="font-size: 22px">📊</span><span>Histórico</span>
-          </button>
-        </div>
-
         <!-- SIDEBAR JOGADOR 2 -->
         <div
           class="player-sidebar sidebar-right"
           id="sidebar-p2"
           style="margin-top: 0"
         >
-          <div class="sidebar-header sc2">Conquistas</div>
+          <!-- CARD DO JOGADOR 2 -->
+          <div class="score-card sc2" id="sc2">
+            <a>
+              <div class="sav" id="gav2">👽</div>
+              <div class="sinfo">
+                <div class="slabel" id="gn2">Jogador 2</div>
+                <span id="gs2">❤️❤️❤️❤️❤️</span>
+              </div>
+            </a>
+          </div>
+          <div class="sidebar-header sc2">
+            <span class="slabel">Conquistas</span>
+          </div>
           <div class="trophy-grid" id="t-grid-2"></div>
         </div>
       </div>
