@@ -1052,3 +1052,182 @@ body {
   animation: heartExplode 1.2s ease-in-out forwards;
   will-change: transform, opacity;
 }
+
+/* ------------------------------------------------------------- */
+/* 📱 AJUSTES RESPONSIVOS (MOBILE/TABLET)                         */
+/* ------------------------------------------------------------- */
+
+/* Classe base para os containers das sidebars (substituindo estilo inline) */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Telas médias e pequenas (Tablets e Celulares em geral) */
+@media (max-width: 1024px) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  /* Grid layout para colocar os cards dos jogadores lado a lado no topo */
+  .main-layout-wrapper {
+    display: grid;
+    grid-template-areas:
+      "p1 p2"
+      "game game";
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .sidebar-left-container {
+    grid-area: p1;
+  }
+
+  .sidebar-right-container {
+    grid-area: p2;
+  }
+
+  #game-screen {
+    grid-area: game;
+  }
+
+  .sidebar-container {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  /* Barras dos jogadores mais compactas */
+  .player-sidebar {
+    width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    padding: 10px 8px;
+    border-radius: 20px;
+    border-width: 2px;
+  }
+
+  .sidebar-header {
+    font-size: 14px;
+    padding: 4px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+
+  /* Exibir conquistas (troféus) de forma horizontal */
+  .trophy-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .trophy-item {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Tabuleiro flexível */
+  #game-screen {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 20px 15px;
+    border-radius: 20px;
+    border-width: 2px;
+  }
+
+  /* Rótulos e botões no topo do tabuleiro */
+  .score-row {
+    margin-bottom: 12px;
+  }
+}
+
+/* Celulares pequenos (Telas estreitas) */
+@media (max-width: 480px) {
+  .main-layout-wrapper {
+    gap: 8px;
+  }
+
+  .player-sidebar {
+    padding: 8px 5px;
+  }
+
+  /* Grade de palavras do tabuleiro central */
+  .grid-wrap {
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .grid-head, .grow {
+    grid-template-columns: 24px repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  .clbl {
+    height: 24px;
+    font-size: 11px;
+    border-radius: 6px;
+  }
+
+  .rlbl {
+    height: 36px;
+    font-size: 11px;
+    border-radius: 6px;
+  }
+
+  .wc {
+    height: 36px;
+    font-size: 9.5px !important;
+    border-radius: 8px;
+    border-width: 1.5px;
+    letter-spacing: 0px;
+    line-height: 1.1;
+  }
+
+  .cpip {
+    width: 12px;
+    height: 12px;
+    top: 2px;
+    right: 2px;
+  }
+
+  /* Botão Significado e Reiniciar */
+  .bot-row {
+    gap: 8px;
+  }
+
+  .sig-btn, .rst-btn {
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    box-shadow: 0 3px 0 currentColor;
+  }
+
+  /* Dica de categoria */
+  .cat-row {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .cat-sel {
+    font-size: 12px;
+    padding: 4px 24px 4px 8px;
+  }
+
+  /* Ajuste no setup screen (Tela inicial de index.html) */
+  #setup-screen {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    min-height: 580px;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+}

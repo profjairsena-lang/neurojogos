@@ -423,3 +423,56 @@
   left: -4px;
   z-index: -1;
 }
+
+/* ------------------------------------------------------------- */
+/* 📱 AJUSTES RESPONSIVOS DE PLACAR PARA DISPOSITIVOS MÓVEIS      */
+/* ------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  /* Reduzir o tamanho dos cartões dos jogadores para caber lado a lado no topo */
+  .score-card {
+    border-radius: 12px;
+  }
+
+  .sc1 a,
+  .sc2 a,
+  .sc3 a {
+    height: 55px !important; /* Altura reduzida de 80px para 55px */
+    padding: 5px 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Reduzir o avatar (emoji) */
+  .sav {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 20px !important;
+    border-width: 3px !important;
+  }
+
+  /* Informações textuais compactas */
+  .sinfo {
+    gap: 1px !important;
+  }
+
+  .slabel {
+    font-size: 11px !important;
+    letter-spacing: 0.5px !important;
+    text-shadow:
+      0 0.1em 4px rgba(0, 0, 0, 0.8),
+      0.05em -0.03em 0 rgba(0, 0, 0, 0.8);
+  }
+
+  #gs1,
+  #gs2 {
+    font-size: 10px !important;
+    margin-top: 0px !important;
+  }
+
+  /* Garantir que as imagens de fundo do card se comportem de forma flexível */
+  .sc1, .sc2 {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
+
